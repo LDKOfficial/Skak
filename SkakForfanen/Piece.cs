@@ -9,7 +9,7 @@ namespace SkakForfanen
     internal class Piece
     {
 
-        // Lasse: 0 is white. 1 is black
+        // Lasse: 0 is white. 1 is black. 
         private int color;
         public int Color
         {
