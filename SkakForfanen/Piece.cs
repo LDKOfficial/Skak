@@ -28,43 +28,104 @@ namespace SkakForfanen
             get { return pointValue; }
         }
 
+        private char icon;
+        public char Icon
+        {
+            get { return icon; }
+        }
+
         // Lasse: Constructer
         public Piece(int colorInput, string typeInput)
         {
             color = colorInput;
             type = typeInput;
 
-            // Lasse: sets the pointValue for the coresponding type.
+            // Lasse: sets the pointValue for the coresponding type. 
+            // Lasse: Uppercase letters are black, while Lowercase are white
             switch (type)
             {
                 case "Pawn":
                 {
                     pointValue = 1;
+                        if (colorInput == 0)
+                        {
+                            icon = 'p';
+                        }
+                        else
+                        {
+                            icon = 'P';
+                        }
                     break;
                 }
                 case "Bishop":
                 {
                     pointValue = 3;
-                    break;
+                        if (colorInput == 0)
+                        {
+                            icon = 'b';
+                        }
+                        else
+                        {
+                            icon = 'B';
+                        }
+                        break;
                 }
                 case "Knight":
                 {
                     pointValue = 3;
-                    break;
+                        if (colorInput == 0)
+                        {
+                            icon = 'h';
+                        }
+                        else
+                        {
+                            icon = 'H';
+                        }
+                        break;
                 }
                 case "Rook":
                 {
                     pointValue = 5;
-                    break;
+                        if (colorInput == 0)
+                        {
+                            icon = 'r';
+                        }
+                        else
+                        {
+                            icon = 'R';
+                        }
+                        break;
                 }
                 case "Queen":
                 {  
-                    pointValue = 9; 
-                    break;
+                    pointValue = 9;
+                        if (colorInput == 0)
+                        {
+                            icon = 'q';
+                        }
+                        else
+                        {
+                            icon = 'Q';
+                        }
+                        break;
+                }
+                case "King":
+                {
+                    pointValue = 0;
+                        if (colorInput == 0)
+                        {
+                            icon = 'k';
+                        }
+                        else
+                        {
+                            icon = 'K';
+                        }
+                        break;
                 }
                 default:
                 {
                     pointValue = 0;
+                    icon = '-';
                     break;
                 }
         }
