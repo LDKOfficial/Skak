@@ -107,13 +107,323 @@ namespace SkakForfanen
         }
 
         public void PrintBoard()
-        { 
+        {
+            Console.WriteLine("    h f g e d c b a \n");
             for (int i = 0; i < board.GetLength(0); i++)
             {
-                Console.WriteLine($"{board[i, 0]} {board[i, 1]} {board[i, 2]} {board[i, 3]} {board[i, 4]} {board[i, 5]} {board[i, 6]} {board[i, 7]}");
+                int row = 0;
+                switch (i)
+                {
+                    case 0:
+                        row = 1; break;
+                    case 1:
+                        row = 2; break;
+                    case 2:
+                        row = 3; break;
+                    case 3:
+                        row = 4; break;
+                    case 4:
+                        row = 5; break;
+                    case 5:
+                        row = 6; break;
+                    case 6:
+                        row = 7; break;
+                    case 7:
+                        row = 8; break;
+                }
+                Console.WriteLine($"{row}   {board[i, 0]} {board[i, 1]} {board[i, 2]} {board[i, 3]} {board[i, 4]} {board[i, 5]} {board[i, 6]} {board[i, 7]}");
+            }
+        }
+
+        public void MovePiece()
+        {
+            Console.WriteLine("What piece do you want to move?");
+            String origin = Console.ReadLine();
+            Console.WriteLine("Where do you want to move this piece?");
+            String position = Console.ReadLine();
+
+            // Lasse: The starting location of the piece
+            int originX = 0, originY = 0;
+
+            switch (origin)
+            {
+                case "a1":
+                    originY = 7; originX = 0; break;
+                case "a2":
+                    originY = 7; originX = 1; break;
+                case "a3":
+                    originY = 7; originX = 2; break;
+                case "a4":
+                    originY = 7; originX = 3; break;
+                case "a5":
+                    originY = 7; originX = 4; break;
+                case "a6":
+                    originY = 7; originX = 5; break;
+                case "a7":
+                    originY = 7; originX = 6; break;
+                case "a8":
+                    originY = 7; originX = 7; break;
+                case "b1":
+                    originY = 6; originX = 0; break;
+                case "b2":
+                    originY = 6; originX = 1; break;
+                case "b3":
+                    originY = 6; originX = 2; break;
+                case "b4":
+                    originY = 6; originX = 3; break;
+                case "b5":
+                    originY = 6; originX = 4; break;
+                case "b6":
+                    originY = 6; originX = 5; break;
+                case "b7":
+                    originY = 6; originX = 6; break;
+                case "b8":
+                    originY = 6; originX = 7; break;
+                case "c1":
+                    originY = 5; originX = 0; break;
+                case "c2":
+                    originY = 5; originX = 1; break;
+                case "c3":
+                    originY = 5; originX = 2; break;
+                case "c4":
+                    originY = 5; originX = 3; break;
+                case "c5":
+                    originY = 5; originX = 4; break;
+                case "c6":
+                    originY = 5; originX = 5; break;
+                case "c7":
+                    originY = 5; originX = 6; break;
+                case "c8":
+                    originY = 5; originX = 7; break;
+                case "d1":
+                    originY = 4; originX = 0; break;
+                case "d2":
+                    originY = 4; originX = 1; break;
+                case "d3":
+                    originY = 4; originX = 2; break;
+                case "d4":
+                    originY = 4; originX = 3; break;
+                case "d5":
+                    originY = 4; originX = 4; break;
+                case "d6":
+                    originY = 4; originX = 5; break;
+                case "d7":
+                    originY = 4; originX = 6; break;
+                case "d8":
+                    originY = 4; originX = 7; break;
+                case "e1":
+                    originY = 3; originX = 0; break;
+                case "e2":
+                    originY = 3; originX = 1; break;
+                case "e3":
+                    originY = 3; originX = 2; break;
+                case "e4":
+                    originY = 3; originX = 3; break;
+                case "e5":
+                    originY = 3; originX = 4; break;
+                case "e6":
+                    originY = 3; originX = 5; break;
+                case "e7":
+                    originY = 3; originX = 6; break;
+                case "e8":
+                    originY = 3; originX = 7; break;
+                case "f1":
+                    originY = 2; originX = 0; break;
+                case "f2":
+                    originY = 2; originX = 1; break;
+                case "f3":
+                    originY = 2; originX = 2; break;
+                case "f4":
+                    originY = 2; originX = 3; break;
+                case "f5":
+                    originY = 2; originX = 4; break;
+                case "f6":
+                    originY = 2; originX = 5; break;
+                case "f7":
+                    originY = 2; originX = 6; break;
+                case "f8":
+                    originY = 2; originX = 7; break;
+                case "g1":
+                    originY = 1; originX = 0; break;
+                case "g2":
+                    originY = 1; originX = 1; break;
+                case "g3":
+                    originY = 1; originX = 2; break;
+                case "g4":
+                    originY = 1; originX = 3; break;
+                case "g5":
+                    originY = 1; originX = 4; break;
+                case "g6":
+                    originY = 1; originX = 5; break;
+                case "g7":
+                    originY = 1; originX = 6; break;
+                case "g8":
+                    originY = 1; originX = 7; break;
+                case "h1":
+                    originY = 0; originX = 0; break;
+                case "h2":
+                    originY = 0; originX = 1; break;
+                case "h3":
+                    originY = 0; originX = 2; break;
+                case "h4":
+                    originY = 0; originX = 3; break;
+                case "h5":
+                    originY = 0; originX = 4; break;
+                case "h6":
+                    originY = 0; originX = 5; break;
+                case "h7":
+                    originY = 0; originX = 6; break;
+                case "h8":
+                    originY = 0; originX = 7; break;
+                default:
+                    break;
+            }
+
+            // Lasse: The end location of the piece
+            int positionY = 0, positionX = 0;
+
+            switch (position)
+            {
+                case "a1":
+                    positionY = 7; positionX = 0; break;
+                case "a2":
+                    positionY = 7; positionX = 1; break;
+                case "a3":
+                    positionY = 7; positionX = 2; break;
+                case "a4":
+                    positionY = 7; positionX = 3; break;
+                case "a5":
+                    positionY = 7; positionX = 4; break;
+                case "a6":
+                    positionY = 7; positionX = 5; break;
+                case "a7":
+                    positionY = 7; positionX = 6; break;
+                case "a8":
+                    positionY = 7; positionX = 7; break;
+                case "b1":
+                    positionY = 6; positionX = 0; break;
+                case "b2":
+                    positionY = 6; positionX = 1; break;
+                case "b3":
+                    positionY = 6; positionX = 2; break;
+                case "b4":
+                    positionY = 6; positionX = 3; break;
+                case "b5":
+                    positionY = 6; positionX = 4; break;
+                case "b6":
+                    positionY = 6; positionX = 5; break;
+                case "b7":
+                    positionY = 6; positionX = 6; break;
+                case "b8":
+                    positionY = 6; positionX = 7; break;
+                case "c1":
+                    positionY = 5; positionX = 0; break;
+                case "c2":
+                    positionY = 5; positionX = 1; break;
+                case "c3":
+                    positionY = 5; positionX = 2; break;
+                case "c4":
+                    positionY = 5; positionX = 3; break;
+                case "c5":
+                    positionY = 5; positionX = 4; break;
+                case "c6":
+                    positionY = 5; positionX = 5; break;
+                case "c7":
+                    positionY = 5; positionX = 6; break;
+                case "c8":
+                    positionY = 5; positionX = 7; break;
+                case "d1":
+                    positionY = 4; positionX = 0; break;
+                case "d2":
+                    positionY = 4; positionX = 1; break;
+                case "d3":
+                    positionY = 4; positionX = 2; break;
+                case "d4":
+                    positionY = 4; positionX = 3; break;
+                case "d5":
+                    positionY = 4; positionX = 4; break;
+                case "d6":
+                    positionY = 4; positionX = 5; break;
+                case "d7":
+                    positionY = 4; positionX = 6; break;
+                case "d8":
+                    positionY = 4; positionX = 7; break;
+                case "e1":
+                    positionY = 3; positionX = 0; break;
+                case "e2":
+                    positionY = 3; positionX = 1; break;
+                case "e3":
+                    positionY = 3; positionX = 2; break;
+                case "e4":
+                    positionY = 3; positionX = 3; break;
+                case "e5":
+                    positionY = 3; positionX = 4; break;
+                case "e6":
+                    positionY = 3; positionX = 5; break;
+                case "e7":
+                    positionY = 3; positionX = 6; break;
+                case "e8":
+                    positionY = 3; positionX = 7; break;
+                case "f1":
+                    positionY = 2; positionX = 0; break;
+                case "f2":
+                    positionY = 2; positionX = 1; break;
+                case "f3":
+                    positionY = 2; positionX = 2; break;
+                case "f4":
+                    positionY = 2; positionX = 3; break;
+                case "f5":
+                    positionY = 2; positionX = 4; break;
+                case "f6":
+                    positionY = 2; positionX = 5; break;
+                case "f7":
+                    positionY = 2; positionX = 6; break;
+                case "f8":
+                    positionY = 2; positionX = 7; break;
+                case "g1":
+                    positionY = 1; positionX = 0; break;
+                case "g2":
+                    positionY = 1; positionX = 1; break;
+                case "g3":
+                    positionY = 1; positionX = 2; break;
+                case "g4":
+                    positionY = 1; positionX = 3; break;
+                case "g5":
+                    positionY = 1; positionX = 4; break;
+                case "g6":
+                    positionY = 1; positionX = 5; break;
+                case "g7":
+                    positionY = 1; positionX = 6; break;
+                case "g8":
+                    positionY = 1; positionX = 7; break;
+                case "h1":
+                    positionY = 0; positionX = 0; break;
+                case "h2":
+                    positionY = 0; positionX = 1; break;
+                case "h3":
+                    positionY = 0; positionX = 2; break;
+                case "h4":
+                    positionY = 0; positionX = 3; break;
+                case "h5":
+                    positionY = 0; positionX = 4; break;
+                case "h6":
+                    positionY = 0; positionX = 5; break;
+                case "h7":
+                    positionY = 0; positionX = 6; break;
+                case "h8":
+                    positionY = 0; positionX = 7; break;
+                default:
+                    break;
+            }
+
+            board[positionX, positionY] = board[originX, originY];
+
+            Console.WriteLine(board[positionX, positionY]);
+            board[originX, originY] = '-';
             }
         }
         
       
     }
-}
+
+

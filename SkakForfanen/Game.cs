@@ -15,5 +15,11 @@ namespace SkakForfanen
             board.Setup();
             board.PrintBoard();
         }
+
+        public void Move()
+        {
+            board.MovePiece();
+            board.PrintBoard();
+        }
     }
 }
