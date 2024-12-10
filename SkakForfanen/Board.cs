@@ -108,7 +108,7 @@ namespace SkakForfanen
 
         public void PrintBoard()
         {
-            Console.WriteLine("    h f g e d c b a \n");
+            Console.WriteLine("    h g f e d c b a \n");
             for (int i = 0; i < board.GetLength(0); i++)
             {
                 int row = 0;
@@ -147,6 +147,113 @@ namespace SkakForfanen
 
 
             // Lasse: Check regler to be done
+        }
+
+        // Kat: Rules logic
+        public bool CheckRules(int[] origin, int[] position)
+        {
+            bool validation = false;
+            int originX = origin[0], originY = origin[1];
+            int positionX = position[0], positionY = position[1];
+
+
+            // Kat: Checks if white pawn Moves correctly
+            if (board[originX, originY] == 'p')
+            {
+                if (originY == positionY && originX - positionX == 1)
+                {
+                    validation = true;
+                }
+            }
+            // Kat: Checks if black pawn moves correctly
+            else if (board[originX, originY] == 'P')
+            {
+                if (originY == positionY && positionX - originX == 1)
+                {
+                    validation = true;
+                }
+            }
+            // Kat: Checks if rook moves correctly
+            else if (board[originX, originY] == 'R' || board[originX, originY] == 'r')
+            {
+                if (originX == positionX && !(positionY == originY))
+                {
+                    validation = true;
+                }
+                else if (!(originX == positionX) && positionY == originY)
+                {
+                    validation = true;
+                }
+            }
+            // Kat: Checks if bishop moves correctly
+            else if (board[originX, originY] == 'B' || board[originX, originY] == 'b')
+            {
+                if (positionX - originX == positionY - originY)
+                {
+                    validation = true;
+                }
+                else if (positionX - originX == originY - positionY)
+                {
+                    validation = true;
+                }
+            }
+            // Kat: Checks if knight moves correctly
+            else if (board[originX, originY] == 'H' || board[originX, originY] == 'h')
+            {
+                if (originY - positionY == 1 && positionX - originX == 2)
+                {
+                    validation = true;
+                }
+                else if (positionY - originY == 1 && positionX - originX == 2)
+                {
+                    validation = true;
+                }
+                else if (originY - positionY == 1 && originX - positionX == 2)
+                {
+                    validation = true;
+                }
+                else if (positionY - originY == 1 && originX - positionX == 2)
+                {
+                    validation = true;
+                }
+                else if (positionY - originY == 2 && positionX - originX == 1)
+                {
+                    validation = true;
+                }
+                else if (originY - positionY == 2 && positionX - originX == 1)
+                {
+                    validation = true;
+                }
+                else if (originY - positionY == 2 && originX - positionX == 1)
+                {
+                    validation = true;
+                }
+                else if(positionY - originY == 2 && originX - positionX == 1)
+                {
+                    validation = true;
+                }
+            }
+
+            else if (board[originX, originY] == 'Q' || board[originX, originY] == 'q')
+            {
+                if (positionX - originX == positionY - originY)
+                {
+                    validation = true;
+                }
+                else if (positionX - originX == originY - positionY)
+                {
+                    validation = true;
+                }
+                else if (originX == positionX && !(positionY == originY))
+                {
+                    validation = true;
+                }
+                else if (!(originX == positionX) && positionY == originY)
+                {
+                    validation = true;
+                }
+            }
+            return validation;
         }
     }     
 }

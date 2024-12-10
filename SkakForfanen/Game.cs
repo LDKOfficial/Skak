@@ -22,8 +22,22 @@ namespace SkakForfanen
             int[] originInt = ConvertChessNotationToArrayNotation(origin);
             string position = GetPosition();
             int[] positionInt = ConvertChessNotationToArrayNotation(position);
-            board.MovePiece(originInt, positionInt);
-            board.PrintBoard();
+
+            Console.WriteLine($"origianl X: {originInt[0]}  original Y: {originInt[1]} \n Ny X: {positionInt[0]}  Ny Y: {positionInt[1]}");
+
+            bool validation = board.CheckRules(originInt, positionInt);
+            if (validation)
+            {
+                board.MovePiece(originInt, positionInt);
+                board.PrintBoard();
+                Move();
+            }
+            else
+            {
+                Console.WriteLine("The move was invalid and you are an idiot pls choose a new move");
+                Move();
+            }
+            
         }
 
         public string GetOrigin()
