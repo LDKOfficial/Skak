@@ -13,28 +13,41 @@ namespace SkakForfanen
         public void StartUp()
         {
             board.Setup();
-            board.PrintBoard();
+            Move();
         }
-
+        public void Continue()
+        {
+            
+            Console.WriteLine("Do you wanna continue Write 1 if yes and 2 if no");
+            int answer = Convert.ToInt16(Console.ReadLine());
+            if (answer == 1) 
+            {
+                Console.Clear();
+                Move();
+            }
+            else
+            {
+                return;
+            }
+        }
         public void Move()
         {
+            board.PrintBoard();
             string origin = GetOrigin();
             int[] originInt = ConvertChessNotationToArrayNotation(origin);
             string position = GetPosition();
             int[] positionInt = ConvertChessNotationToArrayNotation(position);
-
-            Console.WriteLine($"origianl X: {originInt[0]}  original Y: {originInt[1]} \n Ny X: {positionInt[0]}  Ny Y: {positionInt[1]}");
 
             bool validation = board.CheckRules(originInt, positionInt);
             if (validation)
             {
                 board.MovePiece(originInt, positionInt);
                 board.PrintBoard();
-                Move();
+                Continue();
             }
             else
             {
-                Console.WriteLine("The move was invalid and you are an idiot pls choose a new move");
+                Console.WriteLine("The move was invalid");
                 Move();
             }
             

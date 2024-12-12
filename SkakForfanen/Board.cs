@@ -142,7 +142,6 @@ namespace SkakForfanen
 
             board[positionX, positionY] = board[originX, originY];
 
-            Console.WriteLine(board[positionX, positionY]);
             board[originX, originY] = '-';
 
 
@@ -233,18 +232,10 @@ namespace SkakForfanen
                     validation = true;
                 }
             }
-
+            // Kat: Checks if the Queen moves corretly
             else if (board[originX, originY] == 'Q' || board[originX, originY] == 'q')
             {
-                if (positionX - originX == positionY - originY)
-                {
-                    validation = true;
-                }
-                else if (positionX - originX == originY - positionY)
-                {
-                    validation = true;
-                }
-                else if (originX == positionX && !(positionY == originY))
+                if (originX == positionX && !(positionY == originY))
                 {
                     validation = true;
                 }
@@ -252,8 +243,44 @@ namespace SkakForfanen
                 {
                     validation = true;
                 }
+                else if (positionX - originX == positionY - originY)
+                {
+                    validation = true;
+                }
+                else if (positionX - originX == originY - positionY)
+                {
+                    validation = true;
+                }
             }
-            return validation;
+            // Kat: Checks if the King moves corretly
+            else if (board[originX, originY] == 'K' || board[originX, originY] == 'k')
+            {
+                if (originY == positionY && positionX - originX == 1)
+                {
+                    validation = true;
+                }
+                else if (originY == positionY && originX - positionX == 1)
+                {
+                    validation = true;
+                }
+                else if (originX == positionX && positionY - originY == 1)
+                {
+                    validation = true;
+                }
+                else if (originX == positionX && originY - positionY == 1)
+                {
+                    validation = true;
+                }
+                else if (positionX - originX == 1 && positionY - originY == 1)
+                {
+                    validation = true;
+                }
+                else if (originX - positionX == 1 && originY - positionY == 1)
+                {
+                    validation = true;
+                }
+            }
+                return validation;
         }
     }     
 }
