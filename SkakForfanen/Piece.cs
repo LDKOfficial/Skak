@@ -34,14 +34,14 @@ namespace SkakForfanen
             get { return icon; }
         }
 
-        // Lasse: Constructer
+        // Kat: Constructer
         public Piece(int colorInput, string typeInput)
         {
             color = colorInput;
             type = typeInput;
 
-            // Lasse: sets the pointValue for the coresponding type. 
-            // Lasse: Uppercase letters are black, while Lowercase are white
+            // Kat: sets the pointValue for the coresponding type. 
+            // Kat: Uppercase letters are black, while Lowercase are white
             switch (type)
             {
                 case "Pawn":

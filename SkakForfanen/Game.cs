@@ -8,18 +8,23 @@ namespace SkakForfanen
 {
     internal class Game
     {
-
+        // Ian: Creates a new board
         Board board = new Board();
+
+        // Ian: Handles The startup of the program
         public void StartUp()
         {
             board.Setup();
             Move();
         }
+
+        // Ian: Asks the user if they wanna continue
         public void Continue()
         {
             
             Console.WriteLine("Do you wanna continue Write 1 if yes and 2 if no");
             int answer = Convert.ToInt16(Console.ReadLine());
+            // Ian: Checks the answer of the user
             if (answer == 1) 
             {
                 Console.Clear();
@@ -30,29 +35,39 @@ namespace SkakForfanen
                 return;
             }
         }
+
+        // Ian: Handles the majority of the game, which includes the useres input of moves,
+        // printing the board, and moving the pieces.
         public void Move()
         {
             board.PrintBoard();
+
+            // Ian: Gets the users input
             string origin = GetOrigin();
             int[] originInt = ConvertChessNotationToArrayNotation(origin);
             string position = GetPosition();
             int[] positionInt = ConvertChessNotationToArrayNotation(position);
 
+            // Ian: Validates the move
             bool validation = board.CheckRules(originInt, positionInt);
+            // Ian: If true moves the piece and prints the board, then continues
             if (validation)
             {
                 board.MovePiece(originInt, positionInt);
                 board.PrintBoard();
                 Continue();
             }
+            // Ian: Otherwise gets a new input
             else
             {
-                Console.WriteLine("The move was invalid");
+                Console.Clear();
+                Console.WriteLine("The move was invalid \n");
                 Move();
             }
             
         }
 
+        // Ian: Gets the users input for what piece to move
         public string GetOrigin()
         {
             Console.WriteLine("What piece do you want to move?");
@@ -60,6 +75,7 @@ namespace SkakForfanen
             return origin;
         }
 
+        // Ian: Gets the potition of where to move the piece
         private string GetPosition()
         {
             Console.WriteLine("Where do you want to move this piece?");
@@ -67,11 +83,13 @@ namespace SkakForfanen
             return position;
         }
 
+        // Ian: Converts The users input to usabel variabels 
         private int[] ConvertChessNotationToArrayNotation(string chessNotation)
         {
-            // Lasse: The starting location of the piece
+            // Ian: The starting location of the piece
             int arrayNotationX = 0, arrayNotationY = 0;
 
+            // Ian: Converts each individual space to a usabel info
             switch (chessNotation)
             {
                 case "a1":

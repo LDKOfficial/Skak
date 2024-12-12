@@ -10,7 +10,7 @@ namespace SkakForfanen
 {
     internal class Board
     {
-        // Someone: Row 8
+        // Lasse: Row 8
         Piece a8 = new Piece(1, "Rook");
         Piece b8 = new Piece(1, "Knight");
         Piece c8 = new Piece(1, "Bishop");
@@ -20,7 +20,7 @@ namespace SkakForfanen
         Piece g8 = new Piece(1, "Knight");
         Piece h8 = new Piece(1, "Rook");
 
-        // Someone: Row 7
+        // Lasse: Row 7
         Piece a7 = new Piece(1, "Pawn");
         Piece b7 = new Piece(1, "Pawn");
         Piece c7 = new Piece(1, "Pawn");
@@ -30,7 +30,7 @@ namespace SkakForfanen
         Piece g7 = new Piece(1, "Pawn");
         Piece h7 = new Piece(1, "Pawn");
 
-        // Someone: Row 6
+        // Lasse: Row 6
         Piece a6 = new Piece(0, "Blank");
         Piece b6 = new Piece(1, "Blank");
         Piece c6 = new Piece(0, "Blank");
@@ -40,7 +40,7 @@ namespace SkakForfanen
         Piece g6 = new Piece(0, "Blank");
         Piece h6 = new Piece(1, "Blank");
 
-        // Someone: Row 5
+        // Lasse: Row 5
         Piece a5 = new Piece(1, "Blank");
         Piece b5 = new Piece(0, "Blank");
         Piece c5 = new Piece(1, "Blank");
@@ -60,7 +60,7 @@ namespace SkakForfanen
         Piece g4 = new Piece(0, "Blank");
         Piece h4 = new Piece(1, "Blank");
 
-        // Someone: Row 3
+        // Lasse: Row 3
         Piece a3 = new Piece(1, "Blank");
         Piece b3 = new Piece(0, "Blank");
         Piece c3 = new Piece(1, "Blank");
@@ -80,7 +80,7 @@ namespace SkakForfanen
         Piece g2 = new Piece(0, "Pawn");
         Piece h2 = new Piece(0, "Pawn");
 
-        // Someone: Row 1
+        // Lasse: Row 1
         Piece a1 = new Piece(0, "Rook");
         Piece b1 = new Piece(0, "Knight");
         Piece c1 = new Piece(0, "Bishop");
@@ -90,9 +90,10 @@ namespace SkakForfanen
         Piece g1 = new Piece(0, "Knight");
         Piece h1 = new Piece(0, "Rook");
 
-
+        // Lasse: Creates a 2 dimensionel array which is 8 x 8
         char[,] board = new char[8,8];
         
+        // Lasse: Sets up the board by setting the each space to the corresponding piece.
         public void Setup()
         {
             board[0, 0] = a8.Icon; board[0, 1] = b8.Icon; board[0, 2] = c8.Icon; board[0, 3] = d8.Icon; board[0, 4] = e8.Icon; board[0, 5] = f8.Icon; board[0, 6] = g8.Icon; board[0, 7] = h8.Icon;
@@ -106,6 +107,7 @@ namespace SkakForfanen
 
         }
 
+        // Lasse: Prints the board
         public void PrintBoard()
         {
             Console.WriteLine("    h g f e d c b a \n");
@@ -135,17 +137,17 @@ namespace SkakForfanen
             }
         }
 
+        // Lasse: Moves the piece
         public void MovePiece(int[] origin, int[] position)
         {
             int originX = origin[0], originY = origin[1];
             int positionX = position[0], positionY = position[1];
 
+            // Lasse: Moves the piece
             board[positionX, positionY] = board[originX, originY];
 
+            // Lasse: Sets the old spot to be empty
             board[originX, originY] = '-';
-
-
-            // Lasse: Check regler to be done
         }
 
         // Kat: Rules logic
